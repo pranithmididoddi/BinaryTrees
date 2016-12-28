@@ -28,4 +28,19 @@ public class Solution {
         }
         return list;
     }
+    /**Identical binary trees*/
+    public static int isSameTree(TreeNode a, TreeNode b) {
+
+        if(isBooleanTree(a,b)){
+            return 1;
+        }
+        return 0;
+    }
+    public static boolean isBooleanTree(TreeNode a, TreeNode b){
+        if(a==null && b==null) return true;
+        if(a==null || b==null) return false;
+
+        if(a.val==b.val){ return (isBooleanTree(a.left,b.left)) && (isBooleanTree(a.right,b.right));}
+        else return false;
+    }
 }
