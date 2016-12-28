@@ -105,4 +105,17 @@ public class Solution {
 
         return root;
     }
+
+    /**Leetcode max depth*/
+    public int maxDepth(TreeNode a) {
+
+        if(a==null) return 0;
+
+        int leftDepth=maxDepth(a.left);
+        int rightDepth=maxDepth(a.right);
+
+        int maxDepth=Math.max(leftDepth,rightDepth);
+
+        return maxDepth+1;
+    }
 }
