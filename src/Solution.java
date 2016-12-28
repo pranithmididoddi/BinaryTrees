@@ -6,6 +6,8 @@ import java.util.*;
 
 
 public class Solution {
+
+    /**Iterative approach for inorder tree traversal*/
     public List<Integer> inorderTraversal(TreeNode root) {
 
         ArrayList<Integer> list=new ArrayList<Integer>();
