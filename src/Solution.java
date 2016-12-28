@@ -43,4 +43,25 @@ public class Solution {
         if(a.val==b.val){ return (isBooleanTree(a.left,b.left)) && (isBooleanTree(a.right,b.right));}
         else return false;
     }
+
+    /**Symmetric binary trees*/
+    public int isSymmetric(TreeNode a) {
+
+        if(areSymmetric(a.left,a.right)) return 1;
+
+        return 0;
+    }
+
+    public boolean areSymmetric(TreeNode lc, TreeNode rc){
+        if(lc ==null && rc==null) return true;
+
+        if(lc==null || rc==null) return false;
+
+        if(lc.val!=rc.val) return false;
+
+        if(!areSymmetric(lc.left,rc.right)) return false;
+        if(!areSymmetric(lc.right,rc.left)) return false;
+
+        return true;
+    }
 }
