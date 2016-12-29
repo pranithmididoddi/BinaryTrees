@@ -118,4 +118,29 @@ public class Solution {
 
         return maxDepth+1;
     }
+
+/**invert a binary tree*/
+    public TreeNode invertTree(TreeNode root) {
+
+        if(root!=null){
+            invertbst(root);
+        }
+
+        return root;
+
+    }
+
+    public void invertbst(TreeNode root){
+        TreeNode temp=root.left;
+        root.left=root.right;
+        root.right=temp;
+
+        if(root.left!=null){
+            invertbst(root.left);
+        }
+
+        if(root.right!=null){
+            invertbst(root.right);
+        }
+    }
 }
