@@ -143,4 +143,22 @@ public class Solution {
             invertbst(root.right);
         }
     }
+
+    public boolean isBalanced(TreeNode root) {
+        if(isabalancedtree(root)<1) return false;
+        return true;
+    }
+
+    public int isabalancedtree(TreeNode root){
+        if(root==null) return 1;
+
+        int right=isabalancedtree(root.right);
+        int left=isabalancedtree(root.left);
+
+        if(left==-1 || right==-1) return -1;
+
+        if(Math.abs(left-right)>1) return -1;
+
+        return Math.max(left,right)+1;
+    }
 }
