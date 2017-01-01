@@ -28,6 +28,31 @@ public class Solution {
         }
         return list;
     }
+
+    /**Preorder traversal*/
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        if(root==null) return list;
+        Stack<TreeNode> stack=new Stack<>();
+
+        stack.push(root);
+
+        while(!stack.empty()){
+            TreeNode temp=stack.pop();
+            list.add(temp.val);
+
+            if(temp.right!=null){
+                stack.push(temp.right);
+            }
+
+            if(temp.left!=null){
+                stack.push(temp.left);
+            }
+        }
+        return list;
+
+    }
+
     /**Identical binary trees*/
     public static int isSameTree(TreeNode a, TreeNode b) {
 
