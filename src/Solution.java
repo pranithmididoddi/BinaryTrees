@@ -186,4 +186,30 @@ public class Solution {
 
         return Math.max(left,right)+1;
     }
+
+    public int kthSmallest(TreeNode root, int k) {
+
+        TreeNode p=root;
+        int result=0;
+        Stack<TreeNode> stack=new Stack<>();
+
+        while(!stack.empty() || p!=null){
+            if(p!=null){
+                stack.push(p);
+                p=p.left;
+            }
+            else{
+                TreeNode temp=stack.pop();
+                k--;
+
+                if(k==0){
+                    result=temp.val;
+                }
+                p=temp.right;
+
+            }
+        }
+        return result;
+    }
+
 }
