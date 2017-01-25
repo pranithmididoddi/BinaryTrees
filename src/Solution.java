@@ -186,7 +186,7 @@ public class Solution {
 
         return Math.max(left,right)+1;
     }
-
+    /**finding the kth smallest element*/
     public int kthSmallest(TreeNode root, int k) {
 
         TreeNode p=root;
@@ -210,6 +210,20 @@ public class Solution {
             }
         }
         return result;
+    }
+
+    /**Same Tree*/
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p==null && q==null) return true;
+        if(p==null || q==null) return false;
+
+        if(p.val==q.val){
+            return isSameTree(p.left,q.left)&&isSameTree(p.right,q.right);
+        }
+
+        return false;
+
     }
 
 }
