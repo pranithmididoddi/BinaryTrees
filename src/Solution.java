@@ -256,6 +256,32 @@ public class Solution {
         return list;
     }
 
+    public List<Integer> largestValues(TreeNode root) {
 
+        Queue<TreeNode> queue=new LinkedList<>();
+        List<Integer> list=new ArrayList<>();
+        if(root==null) return list;
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            int size=queue.size();
+            int maxval=Integer.MIN_VALUE;
+
+            for(int i=0;i<size;i++){
+                TreeNode temp=queue.poll();
+                maxval=Math.max(temp.val, maxval);
+
+                if(temp.left!=null){
+                    queue.offer(temp.left);
+                }
+
+                if(temp.right!=null){
+                    queue.offer(temp.right);
+                }
+            }
+            list.add(maxval);
+        }
+        return list;
+    }
 
 }
