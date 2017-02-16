@@ -219,7 +219,7 @@ public class Solution {
         if(p==null || q==null) return false;
 
         if(p.val==q.val){
-            return isSameTree(p.left,q.left)&&isSameTree(p.right,q.right);
+            return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
         }
 
         return false;
@@ -282,6 +282,16 @@ public class Solution {
             list.add(maxval);
         }
         return list;
+    }
+
+    public int maxDepth(TreeNode root) {
+
+        if(root==null) return 0;
+
+        int leftval=maxDepth(root.left);
+        int rightval=maxDepth(root.right);
+
+        return Math.max(leftval,rightval)+1;
     }
 
 }
