@@ -309,4 +309,24 @@ public class Solution {
         return validateBST(p.left,min,p.val)&&validateBST(p.right,p.val,max);
     }
 
+    /**Lowest common ancestor of two nodes*/
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null) return null;
+
+        if(root==p || root==q) return root;
+
+        TreeNode l=lowestCommonAncestor(root.left,p,q);
+        TreeNode r=lowestCommonAncestor(root.right,p,q);
+
+        if(l==null&&r==null){
+            return null;
+        }
+        else if(l!=null&&r!=null){
+            return root;
+        }else{
+            return l==null?r:l;
+        }
+    }
+
 }
