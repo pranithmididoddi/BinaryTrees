@@ -294,4 +294,19 @@ public class Solution {
         return Math.max(leftval,rightval)+1;
     }
 
+    /**Validate Binary Search tree*/
+    public boolean isValidBST(TreeNode root) {
+
+        return validateBST(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+
+    }
+
+    public boolean validateBST(TreeNode p, double min, double max){
+        if(p==null) return true;
+
+        if(p.val<=min || p.val>=max) return false;
+
+        return validateBST(p.left,min,p.val)&&validateBST(p.right,p.val,max);
+    }
+
 }
