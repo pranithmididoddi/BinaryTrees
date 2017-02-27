@@ -329,4 +329,25 @@ public class Solution {
         }
     }
 
+    /**Balanced binary tree check*/
+
+    public boolean isBalanced(TreeNode root) {
+        if(root==null) return true;
+
+        if(isBalance(root)==-1)return false;
+        return true;
+    }
+
+    public int isBalance(TreeNode root){
+        if(root==null) return 0;
+
+        int leftval=isBalance(root.left);
+        int rightval=isBalance(root.right);
+
+        if(leftval==-1 || rightval==-1) return -1;
+        if(Math.abs(leftval-rightval)>1) return -1;
+
+        return Math.max(leftval,rightval)+1;
+    }
+
 }
