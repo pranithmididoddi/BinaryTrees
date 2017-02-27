@@ -479,5 +479,52 @@ public class Solution {
         return result;
     }
 
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     *     int val;
+     *     TreeNode left;
+     *     TreeNode right;
+     *     TreeNode(int x) { val = x; }
+     *
+     *          1
+     *         / \
+     *        2   3
+     *       / \ / \
+     *      4  5 6  7
+     *
+     * [4,5,2,6,7,3,1]
+     * }
+     */
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list=new ArrayList<>();
+
+        if(root==null) return list;
+        Stack<TreeNode> stack=new Stack<>();
+
+        stack.push(root);
+
+        while(!stack.empty()){
+            TreeNode temp=stack.peek();
+            if(temp.left==null && temp.right==null){
+                TreeNode removed=stack.pop();
+                int value=removed.val;
+                list.add(value);
+            }else{
+                if(temp.right!=null){
+                    stack.push(temp.right);
+                    temp.right=null;
+                }
+                if(temp.left!=null){
+                    stack.push(temp.left);
+                    temp.left=null;
+                }
+            }
+        }
+
+        return list;
+    }
+
 
 }
