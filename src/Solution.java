@@ -350,4 +350,26 @@ public class Solution {
         return Math.max(leftval,rightval)+1;
     }
 
+    /**kth smallest element in the tree*/
+
+    public int kthS(TreeNode root, int k) {
+        Stack<TreeNode> stack=new Stack<>();
+
+        TreeNode p=root;
+        int result=0;
+
+        while(!stack.empty() || p!=null){
+            if(p!=null){
+                stack.push(p);
+                p=p.left;
+            }else{
+                TreeNode temp=stack.pop();
+                k--;
+                if(k==0) result=temp.val;
+                p=temp.right;
+            }
+        }
+        return result;
+    }
+
 }
