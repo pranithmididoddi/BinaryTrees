@@ -557,5 +557,33 @@ public class Solution {
         return list;
     }
 
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root==null) return false;
+        Queue<TreeNode> nodes=new LinkedList<>();
+        Queue<Integer> values=new LinkedList<>();
+
+        nodes.add(root);
+        values.add(root.val);
+
+        while(!nodes.isEmpty()){
+            int sumval=values.poll();
+            TreeNode curr=nodes.poll();
+
+            if(curr.left==null && curr.right==null && sumval==sum){
+                return true;
+            }
+
+            if(curr.left!=null){
+                nodes.add(curr.left);
+                values.add(sumval+curr.left.val);
+            }
+
+            if(curr.right!=null){
+                nodes.add(curr.right);
+                values.add(sumval+curr.right.val);
+            }
+        }
+        return false;
+    }
 
 }
