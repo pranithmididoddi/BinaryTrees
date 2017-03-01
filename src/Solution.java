@@ -612,4 +612,37 @@ public class Solution {
         }
     }
 
+    public int countNodes(TreeNode root) {
+
+        if(root==null) return 0;
+        int left=getLeft(root);
+        int right=getRight(root);
+
+        return countNodes(root.left)+countNodes(root.right)+1;
+    }
+
+    public int getRight(TreeNode root){
+        int count=0;
+        if(root==null) return 0;
+
+        while(root.right!=null){
+            count++;
+            root=root.right;
+
+        }
+        return count;
+    }
+
+    public int getLeft(TreeNode root){
+        int count=0;
+        if(root==null) return 0;
+
+        while(root.left!=null){
+            count++;
+            root=root.left;
+
+        }
+        return count;
+    }
+
 }
