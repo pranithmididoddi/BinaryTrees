@@ -687,4 +687,31 @@ public class Solution {
         return root;
     }
 
+    public int findBottomLeftValue(TreeNode root) {
+        Queue<TreeNode> queue=new LinkedList<>();
+
+        queue.add(root);
+
+        int qSize=1;
+        int lastval=0;
+
+        while(qSize>0){
+            for(int i=0;i<qSize;i++){
+                TreeNode value=queue.poll();
+                if(i==0) lastval=value.val;
+
+                if(value.left!=null){
+                    queue.add(value.left);
+                }
+
+                if(value.right!=null){
+                    queue.add(value.right);
+                }
+            }
+
+            qSize=queue.size();
+        }
+        return lastval;
+    }
+
 }
