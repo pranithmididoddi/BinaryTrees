@@ -714,4 +714,34 @@ public class Solution {
         return lastval;
     }
 
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+
+        int prestart=0;
+        int preend=preorder.length-1;
+        int instart=0;
+        int inend=inorder.length-1;
+
+        return constructBT(preorder, prestart, preend, inorder, instart, inend);
+
+    }
+
+    public TreeNode constructBT(int[] preorder, int prestart, int preend, int[] inorder, int instart, int inend){
+        if(instart>inend || prestart>preend) return null;
+
+        int val=preorder[prestart];
+        TreeNode root=new TreeNode(val);
+
+        int k=0;
+        for(int i=0;i<inorder.length;i++){
+            if(val==inorder[i]){
+                k=i;
+                break;
+            }
+        }
+
+        root.left=constructBT(preorder, prestart+1, prestart+(k-instart), inorder, instart, k-1);
+        root.right=constructBT(preorder,prestart+(k-instart)+1, preend, inorder, k+1, inend);
+        return root;
+    }
+
 }
